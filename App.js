@@ -1,0 +1,76 @@
+import React, { Component } from 'react'
+import { View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native'
+
+class Inputs extends Component {
+   state = {
+      email: '',
+      hoten: '',
+      password: ''
+   }
+   handleEmail = (text) => {
+      this.setState({ email: text })
+   }
+   handlePassword = (text) => {
+      this.setState({ password: text })
+   }
+   handleTen =(text) =>{
+      this.setState({hoten:text})
+   }
+   login = (email,hoten, pass) => {
+      alert('email: ' + email +  'Họ và tên :'+ hoten + ' Mật khẩu: ' + pass)
+   }
+   render() {
+      return (
+         <View style = {styles.container}>
+            <TextInput style = {styles.input}
+               underlineColorAndroid = "transparent"
+               placeholder = "Xin hãy nhập email"
+               placeholderTextColor = "#9a73ef"
+               autoCapitalize = "none"
+               onChangeText = {this.handleEmail}/>
+            <TextInput style={styles.input}
+            underlineColorAndroid="transparent"
+            placeholder ="Xin hãy nhập họ tên"
+            placeholderTextColor ="#9a73ef"
+            autoCapitalize ="none"
+            onChangeText ={this.handleTen} />
+            <TextInput style = {styles.input}
+               underlineColorAndroid = "transparent"
+               placeholder = "Xin hãy nhập mật khẩu"
+               placeholderTextColor = "#9a73ef"
+               autoCapitalize = "none"
+               onChangeText = {this.handlePassword}/>
+      
+            <TouchableOpacity
+               style = {styles.submitButton}
+               onPress = {
+                  () => this.login(this.state.email,this.state.hoten, this.state.password)
+               }>
+               <Text style = {styles.submitButtonText}> ĐỒNG Ý </Text>
+            </TouchableOpacity>
+         </View>
+      )
+   }
+}
+export default Inputs
+
+const styles = StyleSheet.create({
+   container: {
+      paddingTop: 23
+   },
+   input: {
+      margin: 15,
+      height: 40,
+      borderColor: '#7a42f4',
+      borderWidth: 1
+   },
+   submitButton: {
+      backgroundColor: '#7a42f4',
+      padding: 10,
+      margin: 15,
+      height: 40,
+   },
+   submitButtonText:{
+      color: 'white'
+   }
+})
